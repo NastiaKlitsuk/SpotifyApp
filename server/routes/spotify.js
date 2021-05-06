@@ -4,17 +4,18 @@ const request = require("request");
 
 router.get("/albums/:artistName", (req, res, next) => {
   const authOptions = getAuthOptions();
-  console.log(JSON.stringify(authOptions));
-
   request.post(authOptions, (error, response, body) => {
     if (!error && response.statusCode === 200) {
-      const clientResponce = res;
-
-      console.log(body.access_token);
+      const clientResponse = res;
       const artist = req.params.artistName;
+      const query = Object.keys(req.query).reduce(
+        (prev, current) => `${prev}&${current}=${req.query[current]}`,
+        ""
+      );
       const token = body.access_token;
+      const url = `https://api.spotify.com/v1/search?query=${artist}&type=album${query}`;
       const options = {
-        url: `https://api.spotify.com/v1/search?q=${artist}&type=album`,
+        url,
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -22,9 +23,7 @@ router.get("/albums/:artistName", (req, res, next) => {
       };
 
       request.get(options, (error, response, body) => {
-        console.log("nastia1");
-        console.log(JSON.stringify(body));
-        clientResponce.send(body);
+        clientResponse.send(body);
       });
     }
   });

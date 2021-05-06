@@ -1,0 +1,19 @@
+<div class="dropdown-container">
+  <span class="selected-option">{{selectedOption}}</span>
+  <button class="dropdown-button"
+          (click)="toggleOptions()">v</button>
+  <div class="options-container">
+    <div *ngIf="areOptionsDisplayed"
+         class="scrollable options"
+         infiniteScroll
+         [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="50"
+         (scrolled)="onScroll()"
+         [scrollWindow]="false">
+      <div *ngFor="let option of options"
+           (click)="optionSelected(option)">
+        <span>{{option.value}}</span>
+      </div>
+    </div>
+  </div>
+</div>

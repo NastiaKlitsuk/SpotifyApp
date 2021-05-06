@@ -1,2 +1,13 @@
-<app-dropdown [options]="values" (onOptionSelected)="onOptionSelected($event)"></app-dropdown>
-<app-album-details></app-album-details>
+<div class="app-container">
+  <h1>Bruno Mars Albums</h1>
+  <div class="album-select-container">
+    <label>Select Album</label>
+    <app-dropdown [options]="albumOptions"
+                  (onOptionSelected)="onOptionSelected($event)"
+                  (onScrollDown)="getNextAlbums()"></app-dropdown>
+  </div>
+
+  <app-album-details *ngIf="this.selectedAlbum$ | async as selectedAlbum; else imagePlaceholder"
+                     [album]="selectedAlbum"></app-album-details>
+  <ng-template #imagePlaceholder><img src="../assets/bruno.jpg"/></ng-template>
+</div>

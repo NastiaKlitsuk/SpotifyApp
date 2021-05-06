@@ -1,0 +1,44 @@
+.dropdown-container{
+  position: relative;
+}
+
+.scrollable {
+  overflow-y: scroll;
+  overflow-x: auto;
+}
+
+.options {
+  position: absolute;
+  z-index: 1;
+  top: 1.6rem;
+  left: 0;
+  background-color: lightgray;
+  height: 10rem;
+  width: 15rem;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.options-container {
+  height: 1.5rem;
+  width: 15rem;
+  border: solid grey 1px;
+  border-radius: 5px;
+}
+
+.selected-option {
+  position: absolute;
+  top: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 14rem;
+}
+
+.dropdown-button {
+  border: none;
+  position: absolute;
+  top: 3px;
+  left: 14rem;
+  padding: 0 5px;
+}

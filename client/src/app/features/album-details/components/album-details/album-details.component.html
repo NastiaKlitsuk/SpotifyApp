@@ -1,3 +1,8 @@
-<p>
-  album-details works!
-</p>
+<div class="album-details-container">
+  <div class="metadata-container">
+    <span><b>{{album.name}}</b></span>
+    <span>{{album.releaseDate}}</span>
+  </div>
+
+  <img [src]="album.images[1].url" />
+</div>
