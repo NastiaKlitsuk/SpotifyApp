@@ -5,11 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class SpotifyService {
   readonly baseUrl = "http://localhost:3000/api/spotify";
-  private access_token = "";
 
   constructor(private httpClient: HttpClient) { }
 
   getAlbumsByArtist(artistName: string) {
-    return this.httpClient.get(`${this.baseUrl}/albums`, {params: {artistName}});
+    return this.httpClient.get(`${this.baseUrl}/albums/${artistName}`);
   }
 }

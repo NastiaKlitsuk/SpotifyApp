@@ -1,3 +1,16 @@
-<p>
-  dropdown works!
-</p>
+<div class="dropdown-container">
+  <span *ngIf="selectedOption" class="selected-option-container">{{selectedOption}}</span>
+  <div class="dropdown-button" (click)="toggleOptions()">
+    <div *ngIf="areOptionsDisplayed"
+         class="scrollable options-container"
+         infiniteScroll
+         [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="50"
+         (scrolled)="onScroll()"
+         [scrollWindow]="false">
+      <div *ngFor="let option of options" (click)="optionSelected(option)">
+        <span>{{option}}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const request = require("request");
 
-router.get("/albums", (req, res, next) => {
+router.get("/albums/:artistName", (req, res, next) => {
   const authOptions = getAuthOptions();
   console.log(JSON.stringify(authOptions));
 
