@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'MusicAlbums';
 
   constructor(private p: SpotifyService) {
-    this.p.getTokenAuthorization().subscribe(res => console.log(res));
+    this.p.getAlbumsByArtist("brunomars").subscribe(res => console.log(JSON.stringify(res)));
   }
 }
